@@ -1,0 +1,189 @@
+h1, h2, h3, h4 {
+  color: $black;
+}
+
+.application-root {
+  margin: 15px;
+
+  .offcanvas.offcanvas-end.show ~ .navbar-toggler {
+    display: none !important;
+  }
+
+  .offcanvas-backdrop {
+    height: 100%;
+    width: 100%;
+  }
+
+  input.form-control.search {
+    border-right: 0px;
+  }
+
+  input.form-control.search::placeholder {
+    color:rgba(#000, 0.2);
+  }
+
+  .btn {
+    border-radius: 5px;
+
+    &.btn-outline {
+      border: 1px solid #A388FF;
+      background: rgba(#5E39DD, 0.2);
+      color: #5E39DD;
+    }
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
+    table {
+      min-width: 768px;
+    }
+  }
+
+  hr {
+    color: #c8bafa;
+  }
+
+  .crm-title {
+    font-size: 18px;
+    font-weight: $font-weight-medium;
+  }
+
+  .form-select.custom-select {
+    border: none;
+    background-color: #F9F7FF;
+  }
+
+  .chartbox {
+    background-color: #fff;
+    border: 1px solid #DFD6FF;
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  .home-card {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    row-gap: 10px;
+    column-gap: 10px;
+
+    h3 {
+      font-size: 16px;
+    }
+
+    .card {
+      position: relative;
+      padding: 15px;
+      border: 1px solid #DFD6FF;
+      background-color: #fff;
+      transition: 0.8s;
+      overflow: hidden;
+      z-index: 1;
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: linear-gradient(87deg, #A388FF, #FF70EC);
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+        z-index: -1;
+      }
+
+      &:hover {
+        &::before {
+          opacity: 1;
+        }
+
+        .bi,
+        .bi-graph-up-arrow.total-cost,
+        .bi-graph-up-arrow.follow-up,
+        .bi-graph-up-arrow.new-leads2 {
+          background: #fff;
+        }
+
+        h3,
+        h3.less-count,
+        h3.count {
+          color: #fff;
+        }
+      }
+
+      h3 {
+        font-weight: $font-weight-medium;
+        transition: color 0.5s ease-in-out;
+        position: relative;
+        z-index: 1;
+
+        &.count,
+        &.less-count {
+          font-weight: $font-weight-semibold;
+        }
+
+        &.less-count {
+          color: red;
+        }
+
+        &.count {
+          color: #05DF83;
+        }
+      }
+
+      i.bi {
+        position: absolute;
+        top: 10px;
+        right: 9px;
+        height: 30px;
+        width: 30px;
+        line-height: 30px;
+        border-radius: 50%;
+        transition: color 0.5s ease;
+        z-index: 1;
+
+        &.bi-graph-up-arrow {
+          &.total-cost {
+            color: #C6B90C;
+            background: #FEFFDB;
+          }
+
+          &.follow-up {
+            color: #FC02DB;
+            background: #FFDBFA;
+          }
+
+          &.new-leads2 {
+            color: #029BF7;
+            background: #CDEDFF;
+          }
+        }
+
+        &.bi-graph-down-arrow {
+          color: #DF055C;
+          background: #FFE0ED;
+        }
+
+        // Default style
+        color: #05DF83;
+        background: #E4FFF4;
+      }
+    }
+  }
+}
+
+// Responsive layouts
+@include breakpoint(md) {
+  .application-root {
+    .home-card {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@include breakpoint(xl) {
+  .application-root {
+    .home-card {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+}
